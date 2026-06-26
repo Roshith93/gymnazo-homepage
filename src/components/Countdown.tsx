@@ -188,19 +188,11 @@ export default function Countdown({ targetDate, onComplete }: CountdownProps) {
         </div>
       </main>
 
-      {/* Footer / Bypass button */}
-      <footer className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 relative z-10 border-t border-white/5">
-        <p className="text-[10px] text-gray-500 text-center sm:text-left">
+      {/* Footer */}
+      <footer className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10 border-t border-white/5">
+        <p className="text-[10px] text-gray-500 text-center">
           © {new Date().getFullYear()} Gymnazo - The Fitness Zone. Malamal Junction, Alathur, Palakkad.
         </p>
-
-        {/* Bypass button for previewing */}
-        <button
-          onClick={onComplete}
-          className="text-[10px] font-black uppercase tracking-wider text-gray-600 hover:text-gold-500 transition-colors border border-dashed border-gray-800 hover:border-gold-500/30 px-3 py-1.5 rounded-lg cursor-pointer"
-        >
-          🔑 Preview Website
-        </button>
       </footer>
 
     </div>
