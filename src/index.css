@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Outfit", system-ui, sans-serif;
+  
+  --color-gold-50: #fdfbf4;
+  --color-gold-100: #faf3cf;
+  --color-gold-200: #f3e498;
+  --color-gold-300: #ebd05f;
+  --color-gold-400: #dcb336;
+  --color-gold-500: #d4af37; /* Accent Gold */
+  --color-gold-600: #ad8a23;
+  --color-gold-700: #85651c;
+  --color-gold-800: #5e4616;
+  --color-gold-900: #3f2f11;
+  --color-gold-950: #221808;
+
+  --color-dark-50: #f9f9f9;
+  --color-dark-100: #f1f1f1;
+  --color-dark-200: #e1e1e1;
+  --color-dark-300: #c1c1c1;
+  --color-dark-400: #8c8c8c;
+  --color-dark-500: #595959;
+  --color-dark-600: #424242;
+  --color-dark-700: #2c2c2c;
+  --color-dark-800: #1a1a1a;
+  --color-dark-900: #0f0f0f;
+  --color-dark-950: #050505;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-dark-950);
+    color: var(--color-dark-100);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom Utilities & Effects */
+
+/* Glassmorphism panel */
+.glass-panel {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text gold gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fdf7d6 0%, #d4af37 50%, #b58d24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Border gold gradient */
+.border-gold-gradient {
+  border-image: linear-gradient(to right, #b58d24, #d4af37, #fdf7d6) 1;
+}
+
+/* Custom Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #221808;
+  border-radius: 4px;
+  border: 1px solid #3f2f11;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Smooth active scroll indicators and parallax effects */
+.active-nav-link {
+  color: #d4af37;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* Canvas overlay or generic gold particle keyframes */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+.particle-glow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+/* Hide default scrollbars for clean custom horizontal layouts if needed */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
