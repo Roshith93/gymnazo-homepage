@@ -14,7 +14,7 @@ function useCounter(target: number, duration: number = 2000, trigger: boolean = 
 
     const totalMiliseconds = duration;
     const incrementTime = Math.max(Math.floor(totalMiliseconds / end), 20);
-    
+
     const timer = setInterval(() => {
       start += Math.ceil(end / (totalMiliseconds / incrementTime));
       if (start >= end) {
@@ -144,7 +144,7 @@ export default function Hero() {
   };
 
   // Animated numbers
-  const members = useCounter(700, 2000, startCount);
+  const members = useCounter(800, 2000, startCount);
   const trainers = useCounter(4, 1500, startCount);
 
   return (
@@ -153,10 +153,10 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black text-white pt-20"
     >
       {/* Background Image Parallax with Golden Vignette */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 scale-105"
         style={{
-          backgroundImage: 'linear-gradient(to bottom, rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.95)), url("/gym-interior.jpg")',
+          backgroundImage: 'linear-gradient(to bottom, rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.95)), url("/gallery-1.jpg")',
         }}
       />
 
@@ -217,7 +217,7 @@ export default function Hero() {
               Join Now
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            
+
             <a
               href="tel:+917907878740"
               className="w-full sm:w-auto group inline-flex items-center justify-center gap-3 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-all duration-300 hover:border-gold-500/50 hover:bg-gold-500/5 hover:text-gold-400 active:scale-95"
@@ -239,7 +239,7 @@ export default function Hero() {
           <div className="glass-panel rounded-2xl p-6 flex flex-col justify-center items-center relative group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-gold-500/0 to-gold-500/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="font-heading font-black text-3xl sm:text-4xl text-gold-400">
-              {members}{members === 700 ? '+' : ''}
+              {members}{members === 800 ? '+' : ''}
             </span>
             <span className="text-xs uppercase font-bold tracking-wider text-gray-400 mt-2">
               Happy Members

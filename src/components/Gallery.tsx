@@ -6,45 +6,46 @@ const galleryItems = [
     id: 1,
     title: 'Gym Floor & Turf',
     category: 'Facilities',
-    image: '/gym-interior.jpg',
+    image: '/gallery-1.jpg',
     span: 'md:col-span-2 md:row-span-2',
   },
   {
     id: 2,
-    title: 'Heavy Strength Section',
+    title: 'Strength Section',
     category: 'Strength',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600',
+    image: '/gallery-5.jpg',
     span: 'md:col-span-1 md:row-span-1',
   },
   {
     id: 3,
-    title: 'Treadmills & Conditioning',
-    category: 'Cardio',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=600',
+    title: 'Captain America Dumbbells',
+    category: 'Equipment',
+    image: '/gallery-3.jpg',
     span: 'md:col-span-1 md:row-span-2',
   },
   {
     id: 4,
-    title: 'Dumbbell Collection',
+    title: 'Elite Dumbbell Rack',
     category: 'Equipment',
-    image: 'https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?auto=format&fit=crop&q=80&w=600',
+    image: '/gallery-4.jpg',
     span: 'md:col-span-1 md:row-span-1',
   },
   {
     id: 5,
-    title: 'Powerlifting Cages',
-    category: 'Strength',
-    image: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=600',
+    title: 'Advanced Training Turf',
+    category: 'Facilities',
+    image: '/gallery-2.jpg',
     span: 'md:col-span-2 md:row-span-1',
   },
   {
     id: 6,
-    title: 'Warmup & Core Stretching',
+    title: 'Warmup & Stretching',
     category: 'Mobility',
     image: 'https://images.unsplash.com/photo-1607962837359-5e7e89f86685?auto=format&fit=crop&q=80&w=600',
     span: 'md:col-span-1 md:row-span-1',
   },
 ];
+
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
