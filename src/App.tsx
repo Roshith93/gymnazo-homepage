@@ -26,7 +26,7 @@ export default function App() {
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [showPromoPopup, setShowPromoPopup] = useState(false);
 
-  const LAUNCH_DATE = "2026-08-01T18:30:00+05:30";
+  const LAUNCH_DATE = "2026-08-01T18:40:00+05:30";
   const [showCountdown, setShowCountdown] = useState(() => {
     return new Date() < new Date(LAUNCH_DATE);
   });
