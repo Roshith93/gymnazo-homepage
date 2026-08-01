@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
-import { MapPin, Phone, Mail, Clock, MessageSquare, Send, CheckCircle2, AlertCircle, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, AlertCircle, Star } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const Instagram = ({ className, ...props }: React.ComponentProps<'svg'>) => (
   <svg
@@ -199,7 +200,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider py-3 shadow-lg shadow-emerald-500/10 active:scale-95 transition-all"
                 >
-                  <MessageSquare className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp
                 </a>
                 <a

@@ -1,4 +1,5 @@
-import { MessageSquare, ShieldAlert, Award } from 'lucide-react';
+import { ShieldAlert, Award } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const Instagram = ({ className, ...props }: React.ComponentProps<'svg'>) => (
   <svg
@@ -149,7 +150,7 @@ export default function Footer() {
                 className="h-9 w-9 rounded-xl bg-dark-900 border border-white/5 flex items-center justify-center text-gray-400 hover:text-emerald-500 hover:border-emerald-500/20 active:scale-95 transition-all shadow-md"
                 aria-label="WhatsApp Link"
               >
-                <MessageSquare className="h-4.5 w-4.5" />
+                <WhatsAppIcon className="h-4.5 w-4.5" />
               </a>
               <a
                 href="https://www.instagram.com/gymnazo.in/"

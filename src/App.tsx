@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, PhoneCall, ArrowRight, X } from 'lucide-react';
+import { PhoneCall, ArrowRight, X } from 'lucide-react';
+import WhatsAppIcon from './components/WhatsAppIcon';
 
 // Import sub-components
 import Navbar from './components/Navbar';
@@ -18,16 +19,18 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Countdown from './components/Countdown';
 
+
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [showPromoPopup, setShowPromoPopup] = useState(false);
 
-  const LAUNCH_DATE = "2026-08-01T18:00:00+05:30";
+  const LAUNCH_DATE = "2026-08-01T19:00:00+05:30";
   const [showCountdown, setShowCountdown] = useState(() => {
     return new Date() < new Date(LAUNCH_DATE);
   });
+
 
   // Trigger loading screen fadeout
   useEffect(() => {
@@ -35,16 +38,20 @@ export default function App() {
       setLoading(false);
     }, 1800);
 
-    // Timed promo popup disabled for now:
-    // const promoTimer = setTimeout(() => {
-    //   setShowPromoPopup(true);
-    // }, 10000); // Show popup after 10s
-
     return () => {
       clearTimeout(loadTimer);
-      // clearTimeout(promoTimer);
     };
   }, []);
+
+  // Show inauguration offer popup when loading ends and countdown is cleared
+  useEffect(() => {
+    if (!loading && !showCountdown) {
+      const timer = setTimeout(() => {
+        setShowPromoPopup(true);
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, [loading, showCountdown]);
 
   // Monitor scroll for progress indicator and sticky bottom CTA bar
   useEffect(() => {
@@ -171,7 +178,7 @@ export default function App() {
                 className="fixed bottom-[92px] sm:bottom-6 right-4 sm:right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white h-14 w-14 rounded-full flex items-center justify-center shadow-lg shadow-emerald-600/30 hover:scale-110 hover:shadow-emerald-500/40 active:scale-95 border border-emerald-500/20"
                 aria-label="Chat on WhatsApp"
               >
-                <MessageSquare className="h-6 w-6" />
+                <WhatsAppIcon className="h-6 w-6" />
               </motion.a>
             )}
           </AnimatePresence>
@@ -227,48 +234,39 @@ export default function App() {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.9, opacity: 0 }}
-                  className="relative glass-panel rounded-3xl p-6 sm:p-8 max-w-md w-full border border-gold-500/20 shadow-2xl overflow-hidden"
+                  className="relative bg-dark-950 rounded-2xl max-w-[420px] w-[70%] sm:w-full border border-gold-500/20 shadow-2xl overflow-hidden flex flex-col"
                 >
-                  {/* Gold radial background accent glow */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gold-500/10 rounded-full blur-xl pointer-events-none" />
-
-                  {/* Close button */}
+                  {/* Close button overlayed on the image */}
                   <button
                     onClick={() => setShowPromoPopup(false)}
-                    className="absolute top-4 right-4 p-1.5 rounded-lg border border-white/5 text-gray-500 hover:text-gold-500 transition-colors bg-dark-950/40"
+                    className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 border border-white/10 text-white hover:text-gold-500 transition-colors backdrop-blur-sm cursor-pointer"
                     aria-label="Close promotion popup"
                   >
-                    <X className="h-4.5 w-4.5" />
+                    <X className="h-5 w-5" />
                   </button>
 
-                  <div className="text-center space-y-4">
-                    {/* Header Icon */}
-                    <div className="h-12 w-12 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center mx-auto text-gold-500">
-                      <Sparkles className="h-6 w-6 animate-pulse" />
-                    </div>
+                  {/* Inauguration Offer Image */}
+                  <div className="w-full bg-black">
+                    <img
+                      src="/inauguration-offer.jpg"
+                      alt="Gymnazo Inauguration Offer"
+                      className="w-full h-auto object-contain block"
+                    />
+                  </div>
 
-                    {/* Text content */}
-                    <div className="space-y-1.5">
-                      <p className="text-[10px] font-bold tracking-widest text-gold-500 uppercase">Limited Time Offer</p>
-                      <h3 className="font-heading font-black text-xl text-white">Start Your Transformation</h3>
-                      <p className="text-xs text-gray-400 leading-relaxed pt-1">
-                        Register today to receive a free welcome evaluation session, personalized BMI analysis, and 10% off on our Quarterly Student/Regular slots.
-                      </p>
-                    </div>
-
-                    {/* Form Direct Link */}
-                    <button
-                      onClick={() => {
-                        setShowPromoPopup(false);
-                        handleScrollToContact();
-                      }}
-                      className="w-full py-3 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-black rounded-xl font-heading font-black text-xs uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/15"
+                   {/* Action Section */}
+                   <div className="p-4 bg-dark-950 border-t border-gold-500/10 flex flex-col items-center gap-2">
+                    <a
+                      href="https://wa.me/917907878740?text=%20Hi%20Gymnazo%20%F0%9F%91%8B!,%0A%20I'd%20like%20to%20claim%20the%20Website%20Launch%20Offer.%20Please%20share%20the%20next%20steps!%20%20%F0%9F%92%AA%20%E2%9D%A4%EF%B8%8F"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setShowPromoPopup(false)}
+                      className="w-full py-3 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-500 hover:to-gold-400 text-black rounded-xl font-heading font-black text-xs uppercase tracking-widest transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/20 active:scale-95 cursor-pointer text-center block"
                     >
-                      Claim Offer Now
-                    </button>
-
-                    <p className="text-[9px] text-gray-600 tracking-wide uppercase">
-                      *Offer applicable only for residents in Alathur, Palakkad.
+                      🔥 Claim My Offer
+                    </a>
+                    <p className="text-[9px] text-gray-500 uppercase tracking-widest text-center mt-1">
+                      *Limited Time Only! Grab your extra days now at Malmal Junction, Alathur
                     </p>
                   </div>
                 </motion.div>
@@ -282,25 +280,4 @@ export default function App() {
   );
 }
 
-// Sparkles local SVG fallback or simple helper icon
-function Sparkles({ className, ...props }: React.ComponentProps<'svg'>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      {...props}
-    >
-      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z" />
-      <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5Z" />
-      <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1Z" />
-    </svg>
-  );
-}
+

@@ -204,9 +204,19 @@ export default function Hero() {
           </h1>
 
           {/* High Energy Slogan */}
-          <p className="max-w-2xl mx-auto text-base sm:text-xl text-gray-300 font-medium tracking-wide">
-            Transform Your Body. Transform Your Life. Achieve your peak physical potential with state-of-the-art coaching and high-tier equipment.
-          </p>
+          <div className="max-w-3xl mx-auto space-y-4 pt-2">
+            <p className="text-xs sm:text-sm font-black tracking-[0.3em] text-gold-400 uppercase">
+              Don't Just Work Out. <span className="text-white border-b border-gold-500/30 pb-1">Level Up.</span>
+            </p>
+            <h3 className="font-heading font-black text-base sm:text-lg md:text-xl tracking-widest text-white uppercase leading-tight">
+              Your <span className="text-gold-gradient">Transformation</span> Starts Here
+            </h3>
+            <p className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-gray-400 uppercase">
+              Build Strength <span className="text-gold-500/60 mx-1">•</span> Live Better
+            </p>
+          </div>
+
+
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
