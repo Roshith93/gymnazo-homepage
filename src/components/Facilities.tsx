@@ -6,7 +6,7 @@ const facilities = [
   },
   {
     title: 'Professional Dumbbells',
-    image: 'https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?auto=format&fit=crop&q=80&w=600',
+    image: '/professional-dumbbells.jpg',
     desc: 'Ergonomic dumbbells ranging from 2.5kg up to heavy iron.',
   },
   {
@@ -18,22 +18,22 @@ const facilities = [
   },
   {
     title: 'Rubberized Weight Plates',
-    image: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&q=80&w=600',
+    image: '/rubberized-weight-plates.jpg',
     desc: 'Color-coded bumper plates and durable rubberized iron disks.',
   },
   {
     title: 'Adjustable Benches',
-    image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=600',
+    image: '/adjustable-benches.jpg',
     desc: 'Incline, decline, and flat benches for bench press and free weights.',
   },
   {
     title: 'Dedicated Stretching Area',
-    image: 'https://images.unsplash.com/photo-1607962837359-5e7e89f86685?auto=format&fit=crop&q=80&w=600',
+    image: '/stretching-area.jpg',
     desc: 'Padded floor mats, yoga blocks, and foam rollers for flexibility.',
   },
   {
     title: 'Personal Training Zone',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=600',
+    image: '/personal-training.jpg',
     desc: 'Assigned personal space for 1-on-1 coaching and target setting.',
   },
 ];

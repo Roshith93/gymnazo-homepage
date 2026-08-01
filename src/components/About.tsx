@@ -2,9 +2,17 @@ import { useState, useEffect } from 'react';
 import { Dumbbell, ShieldCheck, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const aboutImages = [
+  '/about-4.jpg',
+  '/about-1.jpg',
+  '/about-2.jpg',
+  '/personal-training.jpg',
+  '/about-3.jpg',
   '/gallery-1.jpg',
-  '/gallery-2.jpg',
-  '/gallery-4.jpg',
+  '/gallery-3.jpg',
+  '/gallery-5.jpg',
+  '/rubberized-weight-plates.jpg',
+  '/professional-dumbbells.jpg',
+  '/adjustable-benches.jpg',
 ];
 
 export default function About() {

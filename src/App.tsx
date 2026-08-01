@@ -26,10 +26,13 @@ export default function App() {
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [showPromoPopup, setShowPromoPopup] = useState(false);
 
-  const LAUNCH_DATE = "2026-08-01T19:00:00+05:30";
+  const LAUNCH_DATE = "2026-08-01T18:30:00+05:30";
   const [showCountdown, setShowCountdown] = useState(() => {
     return new Date() < new Date(LAUNCH_DATE);
   });
+
+
+  const [hasShownPromo, setHasShownPromo] = useState(false);
 
 
   // Trigger loading screen fadeout
@@ -43,17 +46,7 @@ export default function App() {
     };
   }, []);
 
-  // Show inauguration offer popup when loading ends and countdown is cleared
-  useEffect(() => {
-    if (!loading && !showCountdown) {
-      const timer = setTimeout(() => {
-        setShowPromoPopup(true);
-      }, 800);
-      return () => clearTimeout(timer);
-    }
-  }, [loading, showCountdown]);
-
-  // Monitor scroll for progress indicator and sticky bottom CTA bar
+  // Monitor scroll for progress indicator, sticky bottom CTA bar, and promo popup
   useEffect(() => {
     const handleScroll = () => {
       // Calculate scroll progress percentage
@@ -61,9 +54,15 @@ export default function App() {
       if (totalHeight > 0) {
         const scrolled = (window.scrollY / totalHeight) * 100;
         setScrollProgress(scrolled);
+
+        // Show promo popup when user scrolls near the end of the page (e.g. > 95%)
+        if (scrolled > 95 && !hasShownPromo && !loading && !showCountdown) {
+          setShowPromoPopup(true);
+          setHasShownPromo(true);
+        }
       }
 
-      // Show sticky CTA bar only after scrolling past Hero section (e.g. 500px)
+      // Show sticky CTA bar only after scrolling past Hero section (e.g. 600px)
       if (window.scrollY > 600) {
         setShowStickyBar(true);
       } else {
@@ -73,7 +72,7 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [hasShownPromo, loading, showCountdown]);
 
   const handleScrollToContact = () => {
     const el = document.getElementById('contact');
